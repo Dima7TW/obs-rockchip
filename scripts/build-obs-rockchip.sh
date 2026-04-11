@@ -68,35 +68,35 @@ install_deps() {
   case "$id" in
     ubuntu|debian)
       # Update package lists
-      sudo apt-get update -qq
+      apt-get update -qq
       
       # Core build tools (from FFmpeg guide + OBS requirements)
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         autoconf automake build-essential cmake extra-cmake-modules \
         ninja-build pkg-config clang clang-format git-core curl ccache \
         git zsh libtool meson texinfo wget yasm zlib1g-dev checkinstall \
         fakeroot debhelper devscripts equivs
       
       # FFmpeg dependencies (from FFmpeg Ubuntu guide)
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         libass-dev libfreetype6-dev libgnutls28-dev libmp3lame-dev \
         libsdl2-dev libva-dev libvdpau-dev libvorbis-dev libxcb1-dev \
         libxcb-shm0-dev libxcb-xfixes0-dev libx264-dev libx265-dev \
         libvpx-dev libfdk-aac-dev libopus-dev libnuma-dev
       
       # Additional FFmpeg libraries for Ubuntu 20.04+
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         libunistring-dev libaom-dev libdav1d-dev || true
       
       # OBS Studio specific dependencies
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         libavcodec-dev libavdevice-dev libavfilter-dev libavformat-dev \
         libavutil-dev libswresample-dev libswscale-dev libcurl4-openssl-dev \
         libmbedtls-dev libgl1-mesa-dev libjansson-dev libluajit-5.1-dev \
         python3-dev libsimde-dev
       
       # X11/Wayland/Graphics
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         libx11-dev libxcb-randr0-dev libxcb-shm0-dev libxcb-xinerama0-dev \
         libxcb-composite0-dev libxcomposite-dev libxinerama-dev libxcb1-dev \
         libx11-xcb-dev libxcb-xfixes0-dev swig libcmocka-dev libxss-dev \
@@ -105,29 +105,29 @@ install_deps() {
         uthash-dev
       
       # CEF/Chromium dependencies - ATK (Accessibility Toolkit)
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         libatk1.0-dev libatk-bridge2.0-dev libatspi2.0-dev \
         libatk-adaptor
       
       # CEF/Chromium dependencies - X11 extensions
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         libxdamage-dev libxfixes-dev libxrandr-dev libxrender-dev \
         libxext-dev libxmu-dev libxt-dev libxpm-dev
       
       # Qt6 and UI
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         qt6-base-dev qt6-base-private-dev qt6-svg-dev qt6-wayland \
         qt6-image-formats-plugins
       
       # Audio/Video processing
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         libasound2-dev libfontconfig-dev libfreetype6-dev libjack-jackd2-dev \
         libpulse-dev libsndio-dev libspeexdsp-dev libudev-dev libv4l-dev \
         libva-dev libvlc-dev libdrm-dev nlohmann-json3-dev \
         libwebsocketpp-dev libasio-dev
       
       # Additional build tools
-      sudo apt-get install -y --no-install-recommends \
+      apt-get install -y --no-install-recommends \
         nasm xz-utils
       
       # Download and install libdatachannel for ARM64
@@ -138,11 +138,11 @@ install_deps() {
         
         # Install downloaded packages
         for deb in libdatachannel*.deb; do
-          [[ -f "$deb" ]] && sudo dpkg -i "$deb" || true
+          [[ -f "$deb" ]] && dpkg -i "$deb" || true
         done
         
         # Fix any broken dependencies
-        sudo apt-get install -f -y || true
+        apt-get install -f -y || true
       ) &
       
       wait # Wait for background installation
@@ -366,7 +366,7 @@ build_mpp() {
     ..
   
   make -j"$NUM_JOBS"
-  sudo make install
+  make install
   
   export PKG_CONFIG_PATH="$PREFIX_DIR/lib/pkgconfig:$PREFIX_DIR/lib/aarch64-linux-gnu/pkgconfig:${PKG_CONFIG_PATH:-}"
   export LD_LIBRARY_PATH="$PREFIX_DIR/lib:${LD_LIBRARY_PATH:-}"
@@ -439,7 +439,7 @@ build_ffmpeg_rockchip() {
     --disable-podpages --disable-txtpages
   
   make -j"$NUM_JOBS"
-  sudo make install
+  make install
   
   # Normalize version for OBS compatibility
   local ffver_h="$PREFIX_DIR/include/libavutil/ffversion.h"
@@ -461,7 +461,7 @@ build_obs() {
   
   # Install OBS build dependencies
   if [[ -f debian/control ]]; then
-    sudo mk-build-deps -ir -t "apt-get -y --no-install-recommends" debian/control
+    mk-build-deps -ir -t "apt-get -y --no-install-recommends" debian/control
   fi
   
   # Verify CEF is ready (pre-compiled wrapper)
