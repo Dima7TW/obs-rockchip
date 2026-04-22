@@ -436,7 +436,7 @@ build_ffmpeg_rockchip() {
     --extra-ldflags="-L$PREFIX_DIR/lib -Wl,--as-needed" \
     --enable-shared --disable-static \
     --disable-doc --disable-htmlpages --disable-manpages \
-    --disable-podpages --disable-txtpages
+    --disable-podpages --disable-txtpages --extra-cflags="-Wno-error=incompatible-pointer-types"
   
   make -j"$NUM_JOBS"
   make install
