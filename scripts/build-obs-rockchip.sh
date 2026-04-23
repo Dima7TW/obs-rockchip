@@ -497,10 +497,6 @@ build_obs() {
         "ENABLE_VLC": true,
         "ENABLE_WEBRTC": false,
         "ENABLE_CCACHE": $([[ "$USE_CCACHE" == "1" ]] && echo "true" || echo "false"),
-        "CMAKE_C_COMPILER": "gcc",
-  	"CMAKE_CXX_COMPILER": "g++",
-  	"CMAKE_C_COMPILER_LAUNCHER": $([[ "$USE_CCACHE" == "1" ]] && echo "ccache" || echo ""),
-  	"CMAKE_CXX_COMPILER_LAUNCHER": $([[ "$USE_CCACHE" == "1" ]] && echo "ccache" || echo ""),
         "CMAKE_UNITY_BUILD": $([[ "$ENABLE_UNITY_BUILD" == "1" ]] && echo "true" || echo "false")
       }
     }
