@@ -19,7 +19,7 @@ RUN_TESTS=${RUN_TESTS:-"0"}
 # GitHub Actions optimizations
 CCACHE_DIR=${CCACHE_DIR:-"$HOME/.ccache"}
 CCACHE_MAXSIZE=${CCACHE_MAXSIZE:-"3G"} # Increased for CEF builds
-USE_CCACHE=${USE_CCACHE:-"1"}
+USE_CCACHE=${USE_CCACHE:-"0"}
 ENABLE_LTO=${ENABLE_LTO:-"0"} # Disable LTO for faster CI builds
 ENABLE_UNITY_BUILD=${ENABLE_UNITY_BUILD:-"0"} # Disable unity builds
 # CEF settings - ARM64 only, using OBS pre-compiled version
