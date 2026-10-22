@@ -82,7 +82,7 @@ install_deps() {
         libass-dev libfreetype6-dev libgnutls28-dev libmp3lame-dev \
         libsdl2-dev libva-dev libvdpau-dev libvorbis-dev libxcb1-dev \
         libxcb-shm0-dev libxcb-xfixes0-dev libx264-dev libx265-dev \
-        libvpx-dev libfdk-aac-dev libopus-dev libnuma-dev
+        libvpx-dev libfdk-aac-dev libopus-dev libnuma-dev libssl-dev
       
       # Additional FFmpeg libraries for Ubuntu 20.04+
       apt-get install -y --no-install-recommends \
