@@ -132,7 +132,7 @@ install_deps() {
       #  libwebsocketpp-dev libasio-dev
       apt-get install -y --no-install-recommends \
         libasound2-dev libfontconfig-dev libfreetype6-dev libjack-jackd2-dev \
-        libpulse-dev libsndio-dev libspeexdsp-dev libudev-dev libv4l-dev \
+        libpulse-dev libsndio-dev libspeexdsp-dev libudev-dev \
         libva-dev libvlc-dev libdrm-dev nlohmann-json3-dev \
         libwebsocketpp-dev libasio-dev
       
