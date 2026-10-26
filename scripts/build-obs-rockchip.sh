@@ -73,7 +73,7 @@ install_deps() {
       #add packages from rockchip-mpp-repo; at the moment, support only noble, in future - add support trixie and resolute
       echo "deb [trusted=yes] https://apt.fury.io/dima7tw/ /" | tee /etc/apt/sources.list.d/fury.list
       apt update
-      apt install libv4l-0t64 v4l-utils -y
+      apt install libv4l-0t64 v4l-utils v4l-utils-dev -y
       
       # Core build tools (from FFmpeg guide + OBS requirements)
       apt-get install -y --no-install-recommends \
@@ -125,6 +125,11 @@ install_deps() {
         qt6-image-formats-plugins
       
       # Audio/Video processing
+      #apt-get install -y --no-install-recommends \
+      #  libasound2-dev libfontconfig-dev libfreetype6-dev libjack-jackd2-dev \
+      #  libpulse-dev libsndio-dev libspeexdsp-dev libudev-dev libv4l-dev \
+      #  libva-dev libvlc-dev libdrm-dev nlohmann-json3-dev \
+      #  libwebsocketpp-dev libasio-dev
       apt-get install -y --no-install-recommends \
         libasound2-dev libfontconfig-dev libfreetype6-dev libjack-jackd2-dev \
         libpulse-dev libsndio-dev libspeexdsp-dev libudev-dev libv4l-dev \
