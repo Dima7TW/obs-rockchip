@@ -70,6 +70,11 @@ install_deps() {
       # Update package lists
       apt-get update -qq
       
+      #add packages from rockchip-mpp-repo
+      echo "deb [trusted=yes] https://apt.fury.io/dima7tw/ /" | sudo tee /etc/apt/sources.list.d/fury.list
+      apt update
+      apt install libv4l-0t64 v4l-utils -y
+      
       # Core build tools (from FFmpeg guide + OBS requirements)
       apt-get install -y --no-install-recommends \
         autoconf automake build-essential cmake extra-cmake-modules \
