@@ -70,7 +70,7 @@ install_deps() {
       # Update package lists
       apt-get update -qq
       
-      #add packages from rockchip-mpp-repo
+      #add packages from rockchip-mpp-repo; at the moment, support only noble, in future - add support trixie and resolute
       echo "deb [trusted=yes] https://apt.fury.io/dima7tw/ /" | sudo tee /etc/apt/sources.list.d/fury.list
       apt update
       apt install libv4l-0t64 v4l-utils -y
