@@ -134,6 +134,9 @@ install_deps() {
       # Additional build tools
       apt-get install -y --no-install-recommends \
         nasm xz-utils
+	  
+	  #Depedencies for OBS33+
+	  apt install libffmpeg-nvenc-dev 
       
       # Download and install libdatachannel for ARM64
       (
