@@ -464,15 +464,11 @@ build_obs() {
   
   cd "$OBS_SRC_DIR"
   git clone https://github.com/HeyMeco/obs-jfmpp
-  cp ./obs-jfmpp/patches/obs-studio/33.0.0/* ./
+  cp ./obs-jfmpp/patches/obs-studio/32.2.2/* ./
   patch -p001 < 0001-obs-ffmpeg-Add-Rockchip-MPP-encoders.patch
   patch -p001 < 0002-frontend-Add-Rockchip-MPP-to-Simple-output-mode.patch
   patch -p001 < 0003-frontend-Raise-GL-version-on-Mesa-Arm-Mali-drivers.patch
   patch -p001 < 0004-Add-Rockchip-HDMI-input-source.patch
-  patch -p001 < 0005-frontend-Build-with-Qt-6.8.patch
-  patch -f -p001 < 0006-libobs-Let-the-graphics-thread-run-while-GPU-encoding-starts.patch
-  patch -p001 < 0007-Add-Rockchip-camera-source.patch
-  patch -f -p001 < 0008-Build-with-Qt-6.4.patch
   rm -rf ./obs-jfmpp
   rm *.patch
   # Install OBS build dependencies
