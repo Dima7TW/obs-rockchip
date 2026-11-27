@@ -28,7 +28,7 @@ CEF_ARCH="linuxarm64" # Fixed to ARM64 only
 CEF_URL="https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz"
 # Source control settings
 FFMPEG_BRANCH=${FFMPEG_BRANCH:-"8.1"}
-OBS_VERSION=${OBS_VERSION:-"33.0.1"}
+OBS_VERSION=${OBS_VERSION:-"32.2.2"}
 
 mkdir -p "$PREFIX_DIR" "$BUILD_DIR"
 
